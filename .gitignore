@@ -52,3 +52,7 @@ prompt
 server.log
 # Skills directory
 /skills/
+# sandbox / agent artifacts
+tool-results/
+*.pid
+!.env.example
