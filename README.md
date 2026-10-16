@@ -37,21 +37,96 @@ This is not a static infographic: it is an interactive **learning and execution 
 | Database  | Prisma ORM · SQLite                                 |
 | State     | Zustand · TanStack Query                            |
 
-### 🚀 Getting Started
+### ✅ Prerequisites
+
+| Tool                          | Minimum version |
+| ----------------------------- | --------------- |
+| [Bun](https://bun.sh) *or* [Node.js](https://nodejs.org) | Bun 1.1 / Node 18 |
+| Git                           | any recent      |
+
+### 🐧 Installation & Run — Linux / macOS
 
 ```bash
-# 1. Install dependencies
-bun install   # or: npm install
+# 0. Install prerequisites (Ubuntu/Debian)
+sudo apt update && sudo apt install -y git curl unzip
 
-# 2. Configure environment
+# Option A — Bun (recommended, fast)
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+
+# Option B — Node.js via nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.bashrc && nvm install --lts
+```
+
+```bash
+# 1. Clone the project
+git clone https://github.com/greenfix77/software-engineering-interactive-map.git
+cd software-engineering-interactive-map
+
+# 2. Install dependencies
+bun install        # or: npm install
+
+# 3. Configure environment
 cp .env.example .env
 
-# 3. Create the SQLite database
-bun run db:push
+# 4. Create the SQLite database
+bun run db:push    # or: npm run db:push
 
-# 4. Start the dev server
-bun run dev   # → http://localhost:3000
+# 5. Start the dev server
+bun run dev        # or: npm run dev  →  http://localhost:3000
 ```
+
+**Production (optional):**
+
+```bash
+bun run build
+bun run start      # serves the standalone build
+```
+
+### 🪟 Installation & Run — Windows
+
+Run **PowerShell** as a normal user:
+
+```powershell
+# Option A — Bun (recommended)
+powershell -c "irm bun.sh/install.ps1 | iex"
+
+# Option B — Node.js: download & run the LTS installer from https://nodejs.org
+```
+
+```powershell
+# 1. Clone the project
+git clone https://github.com/greenfix77/software-engineering-interactive-map.git
+cd software-engineering-interactive-map
+
+# 2. Install dependencies
+bun install        # or: npm install
+
+# 3. Configure environment  (Windows equivalent of `cp`)
+Copy-Item .env.example .env
+
+# 4. Create the SQLite database
+bun run db:push    # or: npm run db:push
+
+# 5. Start the dev server
+bun run dev        # or: npm run dev  →  http://localhost:3000
+```
+
+> **⚠️ Windows notes**
+> - The bundled `dev` / `build` scripts use Unix tools (`tee`, `cp`). If you get
+>   `'tee' is not recognized`, start the dev server directly instead:
+>   ```powershell
+>   npx next dev -p 3000
+>   ```
+> - Production on Windows (manual equivalent of `bun run build`):
+>   ```powershell
+>   npx next build
+>   Copy-Item -Recurse .next/static .next/standalone/.next/
+>   Copy-Item -Recurse public .next/standalone/
+>   $env:NODE_ENV = "production"; node .next/standalone/server.js
+>   ```
+> - **WSL2 users:** simply follow the 🐧 Linux instructions inside WSL for a 1:1 experience.
 
 ### 📁 Project Structure
 
@@ -94,21 +169,96 @@ upload/AGENTS.md      # Product spec & roadmap
 | پایگاه‌داده | Prisma ORM · SQLite                                 |
 | مدیریت حالت | Zustand · TanStack Query                            |
 
-### 🚀 شروع سریع
+### ✅ پیش‌نیازها
+
+| ابزار                                              | حداقل نسخه        |
+| -------------------------------------------------- | ----------------- |
+| [Bun](https://bun.sh) *یا* [Node.js](https://nodejs.org) | Bun 1.1 / Node 18 |
+| Git                                                | هر نسخهٔ جدید     |
+
+### 🐧 نصب و اجرا — لینوکس / مک
 
 ```bash
-# ۱. نصب وابستگی‌ها
-bun install   # یا: npm install
+# ۰. نصب پیش‌نیازها (اوبونتو/دبیان)
+sudo apt update && sudo apt install -y git curl unzip
 
-# ۲. تنظیم محیط
+# گزینهٔ الف — Bun (پیشنهادی و سریع)
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+
+# گزینهٔ ب — Node.js از طریق nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.bashrc && nvm install --lts
+```
+
+```bash
+# ۱. کلون کردن پروژه
+git clone https://github.com/greenfix77/software-engineering-interactive-map.git
+cd software-engineering-interactive-map
+
+# ۲. نصب وابستگی‌ها
+bun install        # یا: npm install
+
+# ۳. تنظیم محیط
 cp .env.example .env
 
-# ۳. ساخت پایگاه‌دادهٔ SQLite
-bun run db:push
+# ۴. ساخت پایگاه‌دادهٔ SQLite
+bun run db:push    # یا: npm run db:push
 
-# ۴. اجرای سرور توسعه
-bun run dev   # → http://localhost:3000
+# ۵. اجرای سرور توسعه
+bun run dev        # یا: npm run dev  →  http://localhost:3000
 ```
+
+**اجرای پروداکشن (اختیاری):**
+
+```bash
+bun run build
+bun run start      # سرو‌کردن نسخهٔ standalone
+```
+
+### 🪟 نصب و اجرا — ویندوز
+
+**PowerShell** را باز کنید:
+
+```powershell
+# گزینهٔ الف — Bun (پیشنهادی)
+powershell -c "irm bun.sh/install.ps1 | iex"
+
+# گزینهٔ ب — Node.js: نصب‌کنندهٔ LTS را از https://nodejs.org دانلود و اجرا کنید
+```
+
+```powershell
+# ۱. کلون کردن پروژه
+git clone https://github.com/greenfix77/software-engineering-interactive-map.git
+cd software-engineering-interactive-map
+
+# ۲. نصب وابستگی‌ها
+bun install        # یا: npm install
+
+# ۳. تنظیم محیط  (معادل ویندوزیِ `cp`)
+Copy-Item .env.example .env
+
+# ۴. ساخت پایگاه‌دادهٔ SQLite
+bun run db:push    # یا: npm run db:push
+
+# ۵. اجرای سرور توسعه
+bun run dev        # یا: npm run dev  →  http://localhost:3000
+```
+
+> **⚠️ نکات ویندوز**
+> - اسکریپت‌های `dev` / `build` موجود در پروژه از ابزارهای یونیکسی (`tee`، `cp`) استفاده می‌کنند. اگر خطای
+>   `'tee' is not recognized` گرفتید، سرور توسعه را مستقیم اجرا کنید:
+>   ```powershell
+>   npx next dev -p 3000
+>   ```
+> - اجرای پروداکشن در ویندوز (معادل دستیِ `bun run build`):
+>   ```powershell
+>   npx next build
+>   Copy-Item -Recurse .next/static .next/standalone/.next/
+>   Copy-Item -Recurse public .next/standalone/
+>   $env:NODE_ENV = "production"; node .next/standalone/server.js
+>   ```
+> - **کاربران WSL2:** کافی است داخل WSL دستورهای 🐧 لینوکس را دنبال کنید تا تجربهٔ یکسان داشته باشید.
 
 ### 📁 ساختار پروژه
 
